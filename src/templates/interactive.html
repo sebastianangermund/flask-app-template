@@ -1,22 +1,21 @@
-{% extends "base.html" %}
+{% extends "base2.html" %}
 
 {% block title %}Interactive{% endblock %}
 
 {% block content %}
-  <h1>Interactive Page</h1>
+  <h2>I hate Hans Gruber</h2>
   <form method="post">
     <div>
-      <label for="search_text">Search Users</label>
+      <label for="search_text"></label>
       <input type="text" id="search_text" name="search_text">
     </div>
-    <button type="submit">Search</button>
+    <button type="submit">get the code</button>
   </form>
   
   {% if users %}
-    <h2>Search Results:</h2>
     <ul>
       {% for user in users %}
-        <li>{{ user['username'] }}</li>
+        <p>{{ user }}</p>
       {% endfor %}
     </ul>
   {% endif %}

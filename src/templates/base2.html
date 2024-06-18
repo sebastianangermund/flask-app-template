@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>{% block title %}{% endblock %}</title>
+    <style>
+      body {
+        background: linear-gradient(to bottom, #ff00cc, #333399);
+        font-family: 'Comic Sans MS', cursive, sans-serif;
+        color: #ffffff;
+        text-align: center;
+        margin: 0;
+        padding: 0;
+      }
+      header {
+        background-color: #ff66ff;
+        padding: 20px;
+        text-align: center;
+        border-bottom: 5px solid #ff00cc;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      }
+      header h1 {
+        font-size: 3em;
+        margin: 0;
+        animation: neon 1.5s ease-in-out infinite alternate;
+      }
+      @keyframes neon {
+        from {
+          text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #ff00ff, 0 0 40px #ff00ff, 0 0 50px #ff00ff, 0 0 60px #ff00ff, 0 0 70px #ff00ff;
+        }
+        to {
+          text-shadow: 0 0 20px #fff, 0 0 30px #ff00ff, 0 0 40px #ff00ff, 0 0 50px #ff00ff, 0 0 60px #ff00ff, 0 0 70px #ff00ff, 0 0 80px #ff00ff;
+        }
+      }
+      nav {
+        margin: 20px 0;
+      }
+      nav a {
+        color: #fff;
+        text-decoration: none;
+        margin: 0 15px;
+        font-size: 1.2em;
+        transition: color 0.3s;
+      }
+      nav a:hover {
+        color: #ff00cc;
+      }
+      .content {
+        padding: 20px;
+      }
+      button {
+        background: #ff00cc;
+        border: 2px solid #fff;
+        color: #fff;
+        padding: 10px 20px;
+        font-size: 1em;
+        cursor: pointer;
+        transition: background 0.3s, transform 0.3s;
+      }
+      button:hover {
+        background: #fff;
+        color: #ff00cc;
+        transform: scale(1.1);
+      }
+      .sidebar {
+        position: fixed;
+        top: 20%;
+        left: 0;
+        width: 150px;
+        padding: 10px;
+        background: rgba(0, 0, 0, 0.5);
+        border-radius: 0 10px 10px 0;
+        text-align: left;
+      }
+      .sidebar p {
+        margin: 0;
+        color: #ff66ff;
+      }
+      .corner-note {
+        position: fixed;
+        bottom: 10px;
+        right: 10px;
+        background: #ff66ff;
+        padding: 10px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        font-size: 0.9em;
+        color: #fff;
+      }
+      footer {
+        background-color: #333399;
+        padding: 10px;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        color: #ffffff;
+        font-size: 0.8em;
+        text-align: center;
+        border-top: 5px solid #ff00cc;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>John Mclain</h1>
+      <p style="font-size: 1.2em; color: #ff66ff;">Welcome to the coolest place on the internet 😎✨</p>
+      {% if 'user_id' in session %}
+        <form action="{{ url_for('logout') }}" method="get" style="display:inline;">
+          <button type="submit">Logout</button>
+        </form>
+      {% endif %}
+    </header>
+    <nav>
+      {% if 'user_id' not in session %}
+        <a href="{{ url_for('login') }}">Login</a>
+        <a href="{{ url_for('signup') }}">Sign Up</a>
+      {% endif %}
+    </nav>
+    <div class="sidebar">
+      <p>🌟 Check out our latest updates! 🌟</p>
+      <p>🔥 Don't miss out on the fun! 🔥</p>
+    </div>
+    <div class="content">
+      {% block content %}{% endblock %}
+    </div>
+    <div class="corner-note">
+      <p>💬 Let's connect and share the vibes! 💬</p>
+    </div>
+    <footer>
+      <p>© 2024 John Mclain. All rights reserved. 🌈</p>
+    </footer>
+  </body>
+</html>

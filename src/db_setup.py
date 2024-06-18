@@ -8,15 +8,13 @@ with connection:
         CREATE TABLE users (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             username TEXT NOT NULL UNIQUE,
-            password TEXT NOT NULL,
-            gamestate TEXT,
-            points JSON
+            password TEXT NOT NULL
         )
     ''')
 
     connection.execute('''
         INSERT INTO users (username, password) VALUES
-        ('agge', '123Hejsan')
+        ('John', 'Telephone')
     ''')
 
 connection.close()
