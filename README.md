@@ -1,0 +1,1 @@
+Tut on docker: https://dev.to/sre_panchanan/how-to-dockerize-a-flask-application-4mi
