@@ -14,7 +14,7 @@ with connection:
 
     connection.execute('''
         INSERT INTO users (username, password) VALUES
-        ('John', 'Telephone')
+        ('john', 'telephone')
     ''')
 
 connection.close()

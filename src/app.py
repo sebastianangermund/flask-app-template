@@ -3,6 +3,7 @@ import sqlite3
 
 
 app = Flask(__name__)
+app.secret_key = 'your_secret_key'
 
 
 
@@ -20,14 +21,14 @@ def index():
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
-        username = request.form['username']
-        password = request.form['password']
+        username = request.form['username'].lower()
+        password = request.form['password'].lower()
         conn = get_db_connection()
         user = conn.execute('SELECT * FROM users WHERE username = ?', (username,)).fetchone()
         conn.close()
         if user and (user['password'] == password):
             session['user_id'] = user['username']
-            if user['username'] == 'John':
+            if user['username'] == 'john':
                 return redirect(url_for('interactive'))
             else:
                 return redirect(url_for('greeting'))
@@ -42,13 +43,13 @@ def logout():
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
     if request.method == 'POST':
-        username = request.form['username']
-        password = request.form['password']
+        username = request.form['username'].lower()
+        password = request.form['password'].lower()
         conn = get_db_connection()
         existing_user = conn.execute('SELECT * FROM users WHERE username = ?', (username,)).fetchone()
         if existing_user:
             return 'Username already exists'
-        if 'crane' not in password:
+        if 'terse' not in password:
             return 'Password must contain todays wordle'
         conn.execute(f'INSERT INTO users (username, password) VALUES (?, ?)', (username, password))
         conn.commit()
