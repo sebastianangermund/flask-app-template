@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for, session
 import sqlite3
+from random import randint
 
 
 app = Flask(__name__)
@@ -49,8 +50,6 @@ def signup():
         existing_user = conn.execute('SELECT * FROM users WHERE username = ?', (username,)).fetchone()
         if existing_user:
             return 'Username already exists'
-        if 'terse' not in password:
-            return 'Password must contain todays wordle'
         conn.execute(f'INSERT INTO users (username, password) VALUES (?, ?)', (username, password))
         conn.commit()
         conn.close()
@@ -71,7 +70,8 @@ def interactive():
         return redirect(url_for('login'))
     if request.method == 'POST':
         search_text = request.form['search_text']
-        response = '784' if search_text == 'pancake' else 'wrong passphrase'
+        responses = ['yippee ki yay, that\'s wrong', 'yippee ki try again, motherfucker', 'the bomb would have blown by now']
+        response = '784' if search_text == '52054' else responses[randint(0, len(responses)-1)]
         # conn = get_db_connection()
         # users = conn.execute('SELECT * FROM users WHERE username LIKE ?', ('%' + search_text + '%',)).fetchall()
         # conn.close()
@@ -80,4 +80,4 @@ def interactive():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=False)

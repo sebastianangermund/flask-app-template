@@ -64,7 +64,7 @@
       }
       .sidebar {
         position: fixed;
-        top: 20%;
+        bottom: 20%;
         left: 0;
         width: 150px;
         padding: 10px;
@@ -102,7 +102,7 @@
   </head>
   <body>
     <header>
-      <h1>John Mclain</h1>
+      <h1>John McClane &#128153;</h1>
       <p style="font-size: 1.2em; color: #ff66ff;">Welcome to the coolest place on the internet 😎✨</p>
       {% if 'user_id' in session %}
         <form action="{{ url_for('logout') }}" method="get" style="display:inline;">
@@ -117,8 +117,9 @@
       {% endif %}
     </nav>
     <div class="sidebar">
-      <p>🌟 Check out our latest updates! 🌟</p>
-      <p>🔥 Don't miss out on the fun! 🔥</p>
+      <p>🌟 yippee ki yay kemosabe 🌟</p>
+      <p>&#128153; One of these days we're gonna get off our butts... and rent Die Hard again! &#128153;</p>
+      <p>🔥 If we do that, we've got to rent Die Hard. -I bet the British version is good! 🔥</p>
     </div>
     <div class="content">
       {% block content %}{% endblock %}
@@ -127,7 +128,7 @@
       <p>💬 Let's connect and share the vibes! 💬</p>
     </div>
     <footer>
-      <p>© 2024 John Mclain. All rights reserved. 🌈</p>
+      <p>© 2024 Simon Gruber. All rights reserved. 🌈</p>
     </footer>
   </body>
 </html>

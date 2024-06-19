@@ -1,5 +1,4 @@
 import sqlite3
-from werkzeug.security import generate_password_hash
 
 connection = sqlite3.connect('users.db')
 
@@ -14,7 +13,7 @@ with connection:
 
     connection.execute('''
         INSERT INTO users (username, password) VALUES
-        ('john', 'telephone')
+        ('john', 'pigeons')
     ''')
 
 connection.close()

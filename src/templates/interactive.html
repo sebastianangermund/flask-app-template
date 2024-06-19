@@ -3,13 +3,18 @@
 {% block title %}Interactive{% endblock %}
 
 {% block content %}
-  <h2>I hate Hans Gruber</h2>
+  <h2>
+    Very good. Welcome to the lazy finale of my homage to Die Hard 3, Die Hard With a Vengeance.
+    Let's finish this. Remember the jugs? What was the sequence of liters in the 5 liter jug?
+    E.g. if it was first filled with 1, then emptied, and then filled with 2: you should answer 102.
+    <!-- The answer is 52054 -->
+  </h2>
   <form method="post">
     <div>
       <label for="search_text"></label>
       <input type="text" id="search_text" name="search_text">
     </div>
-    <button type="submit">get the code</button>
+    <button type="submit">enter</button>
   </form>
   
   {% if users %}
