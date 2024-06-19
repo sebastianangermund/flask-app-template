@@ -79,5 +79,5 @@ def interactive():
     return render_template('interactive.html', users=[])
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     app.run(debug=False)
